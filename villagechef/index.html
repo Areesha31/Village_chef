@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Village Chef - Grab Big Deals on Yummy Meals!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: "ContrailOne";
+            src: url("assests/fonts/ContrailOne-Regular.ttf");
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Poppins";
+            src: url("assests/fonts/Poppins-Regular.ttf");
+            font-display: swap;
+        }
+
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #181818;
+            color: #FFFFFF;
+            font-family: "Poppins", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem 1.2rem 3.5rem;
+            background-color: #181818;
+            position: relative;
+            max-width: 1350px;
+            margin: 0 auto;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .logo-img {
+            width: 150px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-left: -10px;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2.2rem;
+        }
+
+        .nav-menu ul li a {
+            text-decoration: none;
+            color: #FFFFFF;
+            font-family: "Poppins", sans-serif;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu ul li a:hover {
+            color: #F7B41A;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .icon {
+            color: #FFFFFF;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .icon:hover {
+            color: #F7B41A;
+        }
+
+        .login-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: transparent;
+            color: #F7B41A;
+            border: 2px solid #F7B41A;
+            padding: 0.5rem 1.3rem;
+            border-radius: 50px;
+            font-family: "Poppins", sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .login-btn:hover {
+            background-color: #F7B41A;
+            color: #181818;
+        }
+
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.2rem;
+        }
+
+        /* MAIN SECTION */
+        .bg {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 3vw, 2.5rem);
+            width: 100%;
+        }
+
+        .grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 5fr 6fr;
+            gap: clamp(2rem, 4vw, 4rem);
+            align-items: center;
+        }
+
+        .left-side {
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.25rem;
+        }
+
+        .heading {
+            font-size: clamp(2.4rem, 4.5vw, 4rem);
+            font-family: "ContrailOne", cursive;
+            line-height: 1.15;
+            color: #FFFFFF;
+            letter-spacing: 0.5px;
+        }
+
+        .heading-color {
+            color: #F7B41A;
+        }
+
+        .heading2 {
+            font-family: "Poppins", sans-serif;
+            color: #D1D1D1;
+            font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+            line-height: 1.6;
+            max-width: 520px;
+        }
+
+        .h-btn {
+            background-color: #F7B41A;
+            color: #181818;
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            width: fit-content;
+            min-width: 170px;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            border: 2px solid #F7B41A;
+            font-size: clamp(1rem, 1.1vw, 1.2rem);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 18px rgba(247, 180, 26, 0.25);
+            margin-top: 0.5rem;
+        }
+
+        .h-btn:hover {
+            background-color: transparent;
+            color: #F7B41A;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 22px rgba(247, 180, 26, 0.4);
+        }
+
+        .customer-review {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .review-images {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 140px;
+            height: 60px;
+            flex-shrink: 0;
+        }
+
+        .review {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            position: absolute;
+            border: 3px solid #181818;
+            object-fit: cover;
+        }
+
+        .img1 {
+            left: 0;
+            z-index: 3;
+        }
+
+        .img2 {
+            left: 38px;
+            z-index: 2;
+        }
+
+        .img3 {
+            left: 76px;
+            z-index: 1;
+        }
+
+        .review-text {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .review-title {
+            color: #FFFFFF;
+            font-family: "Poppins", sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .review-rating {
+            font-family: "Poppins", sans-serif;
+            font-size: 0.9rem;
+            color: #FFFFFF;
+            margin: 0.2rem 0 0 0;
+        }
+
+        .star {
+            color: #F7B41A;
+        }
+
+        .review-count-text {
+            color: #A0A0A0;
+            font-size: 0.85rem;
+        }
+
+        .img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .img {
+            width: 100%;
+            max-width: 750px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+            transition: transform 0.4s ease;
+            margin-top: -20px;
+        }
+
+        .img:hover {
+            transform: scale(1.02);
+        }
+
+        /* MEDIA QUERIES FOR LAPTOPS, TABLETS & MOBILE */
+        @media (max-width: 1200px) {
+            .navbar {
+                padding: 1.1rem 2rem 1.1rem 3rem;
+            }
+
+            .nav-menu ul {
+                gap: 1.6rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 1rem 1.5rem 1rem 2.5rem;
+            }
+
+            .nav-menu ul {
+                gap: 1.2rem;
+            }
+
+            .logo-img {
+                width: 150px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .left-side {
+                align-items: center;
+            }
+
+            .heading2 {
+                max-width: 100%;
+            }
+
+            .customer-review {
+                justify-content: center;
+            }
+
+            .img {
+                max-width: 520px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.9rem 1.2rem 0.9rem 1.8rem;
+            }
+
+            .hamburger-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #222222;
+                padding: 1.5rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+                border-bottom: 2px solid #F7B41A;
+            }
+
+            .nav-menu.active {
+                display: block;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .bg {
+                padding: 1.8rem 1rem;
+            }
+
+            .h-btn {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .customer-review {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .review-text {
+                align-items: center;
+            }
+
+            .img {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 0.8rem 1rem 0.8rem 1.5rem;
+            }
+
+            .logo-img {
+                width: 130px;
+            }
+
+            .nav-right {
+                gap: 0.75rem;
+            }
+
+            .login-btn {
+                padding: 0.4rem 0.85rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .navbar {
+                padding: 0.7rem 0.8rem 0.7rem 1.2rem;
+            }
+
+            .logo-img {
+                width: 115px;
+            }
+
+            .nav-right {
+                gap: 0.5rem;
+            }
+
+            .login-btn {
+                padding: 0.35rem 0.7rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <img class="logo-img" src="assests/images/logo.png" alt="Village Chef">
+        </div>
+
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-right">
+            <i class="fa-solid fa-magnifying-glass icon"></i>
+            <i class="fa-solid fa-cart-shopping icon"></i>
+            <button class="login-btn">
+                <i class="fa-solid fa-arrow-right"></i> Login
+            </button>
+            <button class="hamburger-btn" id="mobile-toggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="bg">
+        <div class="grid">
+            <div class="left-side">
+                <h1 class="heading">Grab Big Deals on <span class="heading-color">Yummy Meals!</span></h1>
+                <p class="heading2">Lorem ipsum dolor sit amet consectetur. Aenean maurisnam tortor curabitur phasellus.
+                </p>
+                <button class="h-btn">Get Started</button>
+                <div class="customer-review">
+                    <div class="review-images">
+                        <img class="review img1" src="assests/images/Ellipse 5.png" alt="Customer review avatar 1">
+                        <img class="review img2" src="assests/images/Ellipse 6.png" alt="Customer review avatar 2">
+                        <img class="review img3" src="assests/images/Ellipse 7.png" alt="Customer review avatar 3">
+                    </div>
+
+                    <div class="review-text">
+                        <p class="review-title">Our Happy Customers</p>
+                        <p class="review-rating">
+                            <span class="star">★</span> 4.8 <span class="review-count-text">(18.5k Review)</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <img class="img" src="assests/images/Group 1.png" alt="Village Chef Delicious Meal Deal">
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+
+</body>
+
+</html>
